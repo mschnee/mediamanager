@@ -1,0 +1,56 @@
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+.paths {
+  width: 400px;
+}
+.directory-current {
+  background-color: #5bc0de;
+  border: 1px solid #46b8da;
+  color: #fff;
+  margin: 5px 0;
+  padding: 5px;
+  width: 400px;
+}
+button.directory,
+button.directory-reset,
+button.directory.parent,
+button.directory-reset.parent {
+  background-color: #428bca;
+  background-image: none;
+  border: 1px solid #357ebd;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  padding: 6px 12px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 400px;
+}
+button.directory-reset,
+button.directory-reset-reset,
+button.directory.parent-reset,
+button.directory-reset.parent-reset {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  color: #fff;
+  width: 200px;
+}
+button.directory.parent,
+button.directory-reset.parent,
+button.directory.parent.parent,
+button.directory-reset.parent.parent {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+  color: #fff;
+}
