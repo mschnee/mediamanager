@@ -6,7 +6,7 @@ angular.module("BrowserApp").controller("BrowserCtrl", function($scope) {
     $test: $("#button-test"),
     $directories: $("button.directory")
   };
-  $pathsContainer.on("click", button.$directories, function(event) {
+  $pathsContainer.on("click", "button.directory", function(event) {
     var path;
     path = getPathFromButton(event.target);
     return getDirectories(path);

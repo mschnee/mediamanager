@@ -6,7 +6,31 @@ $color = {
   blue-light: #5bc0de,
   blue-light2: #46b8da,
   orange: #f0ad4e,
-  orange2: #eea236
+  orange2: #eea236,
+  green: #5cb85c,
+  green2: #4cae4c,
+
+  white: #ffffff,
+  gray: {
+    lightest:     #e6e6e6,
+    ligher:       #cccccc,
+    light:        #b3b3b3,
+    medium-light: #999999,
+    medium:       #808080,
+    medium-dark:  #666666,
+    dark:         #4d4d4d,
+    darker:       #333333,
+    darkest:      #1a1a1a,
+  },
+  black: #000000,
+  theme: {
+    primary: #428bca,
+    success: #5cb85c,
+    info:    #5bc0de,
+    warning: #f0ad4e,
+    danger:  #d9534f,
+    primary: #428bca
+  }
 }
 
 *,
@@ -20,42 +44,119 @@ body
 .paths
   width: 400px
 
+button
+  background-image: none
+  border: 1px solid
+  border-radius: 4px
+  color: $color.black
+  cursor: pointer
+  display: inline-block
+  font-size: 14px
+  font-weight: 400
+  line-height: 1.42857143
+  padding: 6px 12px
+  text-align: center
+  vertical-align: middle
+  white-space: nowrap
+
+  &.default
+    background-color: $color.white
+    border-color: darken($color.white, 20%)
+
+  &.primary
+    background-color: $color.theme.primary
+    border-color: darken($color.theme.primary, 9%)
+    color: $color.white
+
+  &.success
+    background-color: $color.theme.success
+    border-color: darken($color.theme.success, 9%)
+    color: $color.white
+
+  &.info
+    background-color: $color.theme.info
+    border-color: darken($color.theme.info, 9%)
+    color: $color.white
+
+  &.warning
+    background-color: $color.theme.warning
+    border-color: darken($color.theme.warning, 9%)
+    color: $color.white
+
+  &.danger
+    background-color: $color.theme.danger
+    border-color: darken($color.theme.danger, 9%)
+    color: $color.white
+
+  &.link
+    background-color: transparent
+    border-color: transparent
+    color: $color.theme.link
+
+  &.reset
+    @extend button.danger
+    display: block
+
+  &.test
+    @extend button.reset
+
+  &.directory
+    @extend button.primary
+    width: 100%
+
+    &.parent
+      @extend button.warning
+
+  &.save
+    @extend button.success
+
+.directories
+  max-height: 303px
+  overflow: auto
+  width: 100%
+
 .directory
 
-  &-current
-    background-color: $color.blue-light
-    border: 1px solid $color.blue-light2
+  &.current
+    background-color: $color.theme.info
+    border: 1px solid darken($color.theme.info, 9%)
     color: #fff
     margin: 5px 0
     padding: 5px
-    width: 400px
+    width: 100%
 
-  button&
-    background-color: $color.blue
-    background-image: none
-    border: 1px solid $color.blue2
-    border-radius: 4px
-    cursor: pointer
-    display: block
-    font-size: 14px
-    font-weight: 400
-    line-height: 1.42857143
-    padding: 6px 12px
-    text-align: center
-    vertical-align: middle
-    white-space: nowrap
-    width: 400px
+  // button&
+  //   background-color: $color.blue
+  //   background-image: none
+  //   border: 1px solid $color.blue2
+  //   border-radius: 4px
+  //   cursor: pointer
+  //   display: block
+  //   font-size: 14px
+  //   font-weight: 400
+  //   line-height: 1.42857143
+  //   padding: 6px 12px
+  //   text-align: center
+  //   vertical-align: middle
+  //   white-space: nowrap
+  //   width: 400px
 
-    &-reset
-      @extend button.directory
-      background-color: $color.red
-      border-color: $color.red2
-      color: #fff
-      width: 200px
+  // &.reset
+  //   @extend button.directory
+  //   background-color: $color.red
+  //   border-color: $color.red2
+  //   color: #fff
+  //   width: 200px
+  // &.save
+  //   @extend button.directory
+  //   background-color: $color.green
+  //   border-color: $color.green2
+  //   color: #fff
+  //   width: 200px
 
-    &.parent
-      @extend button.directory
-      background-color: $color.orange
-      border-color: $color.orange2
-      color: #fff
-      // width: 100px
+  // &.parent
+  //   @extend button.directory
+  //   background-color: $color.orange
+  //   border-color: $color.orange2
+  //   color: #fff
+  //   // width: 100px

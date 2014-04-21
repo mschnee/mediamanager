@@ -7,9 +7,9 @@ express    = require "express"
 path       = require "path"
 fs         = require "fs"
 bodyParser = require "body-parser"
-port       = process.env.PORT || 3000
+_          = require "lodash"
 
-app     = express()
+app = express()
 
 # MOUNT MIDDLEWARE
 app.use bodyParser()
@@ -32,6 +32,7 @@ routes = require("./config/routes")(app)
 # START THE SERVER
 # ------------------------------------------------------------------------------
 
+port = process.env.PORT || 3000
 app.listen port
 
 console.log "Magic happens on port #{port}"

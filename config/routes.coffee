@@ -42,22 +42,18 @@ module.exports = (app) ->
   app.route "/directories"
     .post (req, res) ->
       _path = req.body.path or "#{path.sep}"
-
       data =
         dirs: []
         parent: "#{path.sep}"
         is_root: false
         home: "/nonexistant/"
         empty: true
-
       if _path is path.sep
         data.is_root = true
         data.parent  = false
-
       fs.readdir _path, (err, files) ->
         data.empty = false
         data.parent = path.dirname(_path) unless data.parent is false
-
         files.map (file) ->
           stats = fs.statSync "#{_path}"
           if stats.isDirectory() and not file.match /\./
@@ -67,8 +63,6 @@ module.exports = (app) ->
             data.dirs.push
               path: fullPath
               name: file
-
-        # console.log data
         res.json data
 
   app.route "/browser"
@@ -76,25 +70,3 @@ module.exports = (app) ->
       fs.readdir "/", (err, files) ->
         unless err
           res.render "browser/browser", { files: files }
-
-  app.route "/browser/directories"
-    .post (req, res) ->
-      # prev = "../"
-      # pth = req.params.path
-      console.log req.body
-      # _path = "/" if req.params.path == "root"
-      # fs.readdir "/#{_path}", (err, files) ->
-      #   # console.log files
-      #   unless err
-      #     files.map (file) ->
-      #       # previous: if "/" then "" else path
-      #       # path.join(prev, file)
-      #       # console.log "======================================================="
-      #       # console.log file
-      #       filepath = "#{_path}#{file}"
-      #       fs.stat filepath, (err, stats) ->
-      #         if stats.isDirectory() and not filepath.match /\/\./
-      #           console.log "#{_path}#{file}"
-          # console.log f
-
-          # res.json f

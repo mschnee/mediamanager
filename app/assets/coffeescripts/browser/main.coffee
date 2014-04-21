@@ -9,7 +9,7 @@ angular
       $test:  $("#button-test")
       $directories: $("button.directory")
 
-    $pathsContainer.on "click", button.$directories, (event) ->
+    $pathsContainer.on "click", "button.directory", (event) ->
       path = getPathFromButton event.target
       getDirectories path
 

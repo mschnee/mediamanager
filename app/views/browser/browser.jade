@@ -12,20 +12,23 @@ block content
       class="paths" )
 
     button(id="button-reset",
-           class="directory-reset",
+           class="reset",
            data-path="") Reset
 
     button(id="button-test",
-           class="directory-reset",
+           class="test",
            data-path="") Test
 
-    p(class="directory-current") {{ current.directory.path }}
+    p(class="directory current") {{ current.directory.path }}
 
-    button(ng-if="current.directory.parent",
-           id="directory-parent",
-           class="directory parent",
-           data-path="{{ current.directory.parent }}") &lt;&lt; {{ current.directory.parent }}
+    div(class="directories")
+      button(ng-if="current.directory.parent",
+             id="directory-parent",
+             class="parent directory",
+             data-path="{{ current.directory.parent }}") &lt;&lt; {{ current.directory.parent }}
 
-    button(ng-repeat="directory in directories",
-           class="directory",
-           data-path="{{ directory.path }}") {{ directory.name }}
+      button(ng-repeat="directory in directories",
+             class="directory",
+             data-path="{{ directory.path }}") {{ directory.name }}
+
+    button(class="save") Save
