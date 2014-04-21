@@ -1,0 +1,61 @@
+$color = {
+  red: #d9534f,
+  red2: #d43f3a,
+  blue: #428bca,
+  blue2: #357ebd,
+  blue-light: #5bc0de,
+  blue-light2: #46b8da,
+  orange: #f0ad4e,
+  orange2: #eea236
+}
+
+*,
+*:before,
+*:after
+  box-sizing: border-box
+
+body
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+.paths
+  width: 400px
+
+.directory
+
+  &-current
+    background-color: $color.blue-light
+    border: 1px solid $color.blue-light2
+    color: #fff
+    margin: 5px 0
+    padding: 5px
+    width: 400px
+
+  button&
+    background-color: $color.blue
+    background-image: none
+    border: 1px solid $color.blue2
+    border-radius: 4px
+    cursor: pointer
+    display: block
+    font-size: 14px
+    font-weight: 400
+    line-height: 1.42857143
+    padding: 6px 12px
+    text-align: center
+    vertical-align: middle
+    white-space: nowrap
+    width: 400px
+
+    &-reset
+      @extend button.directory
+      background-color: $color.red
+      border-color: $color.red2
+      color: #fff
+      width: 200px
+
+    &.parent
+      @extend button.directory
+      background-color: $color.orange
+      border-color: $color.orange2
+      color: #fff
+      // width: 100px
