@@ -53,7 +53,7 @@ module.exports = (app) ->
         data.parent  = false
       fs.readdir _path, (err, files) ->
         data.empty = false
-        data.parent = path.dirname(_path) unless data.parent is false
+        data.parent = path.dirname _path unless data.parent is false
         files.map (file) ->
           stats = fs.statSync "#{_path}"
           if stats.isDirectory() and not file.match /\./

@@ -21,8 +21,10 @@ angular.module("BrowserApp").controller("BrowserCtrl", function($scope) {
   $scope.directories = [];
   $scope.current = {
     directory: {
-      path: null,
-      parent: null
+      path: " ",
+      name: null,
+      parentPath: null,
+      parentName: null
     }
   };
   getPathFromButton = function(button) {
@@ -40,19 +42,29 @@ angular.module("BrowserApp").controller("BrowserCtrl", function($scope) {
     });
   };
   updateCurrentPath = function(path) {
+    var name, nameStart;
     if (path) {
-      return $scope.current.directory.path = path;
+      nameStart = path.lastIndexOf("/");
+      name = path.substr(nameStart + 1, path.length - 1);
+      $scope.current.directory.path = path;
+      return $scope.current.directory.name = name;
     }
   };
-  updateCurrentParent = function(parent) {
-    if (parent) {
-      return $scope.current.directory.parent = parent;
+  updateCurrentParent = function(parentPath) {
+    var parentName, parentNameStart;
+    if (parentPath) {
+      parentNameStart = parentPath.lastIndexOf("/");
+      parentName = parentPath.substr(parentNameStart + 1, parentPath.length - 1);
+      $scope.current.directory.parentPath = parentPath;
+      return $scope.current.directory.parentName = parentName;
     }
   };
   resetDirectories = function() {
     $scope.directories = [];
-    $scope.current.directory.path = null;
-    return $scope.current.directory.parent = null;
+    $scope.current.directory.path = " ";
+    $scope.current.directory.name = null;
+    $scope.current.directory.parentPath = null;
+    return $scope.current.directory.parentName = null;
   };
   return getDirectories = function(path) {
     var _data;

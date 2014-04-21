@@ -24,8 +24,10 @@ angular
 
     $scope.current =
       directory:
-        path: null
-        parent: null
+        path: " "
+        name: null
+        parentPath: null
+        parentName: null
 
     getPathFromButton = (button) ->
       $(button)
@@ -41,15 +43,25 @@ angular
           path: directory.path
 
     updateCurrentPath = (path) ->
-      $scope.current.directory.path = path if path
+      if path
+        nameStart = path.lastIndexOf "/"
+        name = path.substr nameStart + 1, path.length - 1
+        $scope.current.directory.path = path
+        $scope.current.directory.name = name
 
-    updateCurrentParent = (parent) ->
-      $scope.current.directory.parent = parent if parent
+    updateCurrentParent = (parentPath) ->
+      if parentPath
+        parentNameStart = parentPath.lastIndexOf "/"
+        parentName = parentPath.substr parentNameStart + 1, parentPath.length - 1
+        $scope.current.directory.parentPath = parentPath
+        $scope.current.directory.parentName = parentName
 
     resetDirectories = ->
       $scope.directories = []
-      $scope.current.directory.path = null
-      $scope.current.directory.parent = null
+      $scope.current.directory.path = " "
+      $scope.current.directory.name = null
+      $scope.current.directory.parentPath = null
+      $scope.current.directory.parentName = null
 
     getDirectories = (path) ->
       _data = "path": path

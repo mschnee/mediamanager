@@ -22,10 +22,10 @@ block content
     p(class="directory current") {{ current.directory.path }}
 
     div(class="directories")
-      button(ng-if="current.directory.parent",
+      button(ng-if="current.directory.parentPath",
              id="directory-parent",
              class="parent directory",
-             data-path="{{ current.directory.parent }}") &lt;&lt; {{ current.directory.parent }}
+             data-path="{{ current.directory.parentPath }}") &lt;&lt; {{ current.directory.parentName }}
 
       button(ng-repeat="directory in directories",
              class="directory",
