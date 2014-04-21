@@ -2,38 +2,23 @@
 angular
   .module "BrowserApp"
   .controller "BrowserCtrl", ($scope) ->
-
-    # _dirs = [
-    #   "/mnt/base/media/movies"
-    #   "/mnt/tank/media/tv"
-    #   "/mnt/tank/downloads"
-    # ]
-
-    # _test = [
-    #   "/mnt/base/test"
-    # ]
-
     $pathsContainer = $("#paths-container")
+
     button =
       $reset: $("#button-reset")
       $test:  $("#button-test")
-      $directories:     $("button.directory")
+      $directories: $("button.directory")
 
-    $pathsContainer
-      .on "click", button.$directories, (event) ->
-        path = getPathFromButton event.target
-        console.log path
-        getDirectories path
-        # $scope.$apply()
+    $pathsContainer.on "click", button.$directories, (event) ->
+      path = getPathFromButton event.target
+      getDirectories path
 
-    button.$reset
-      .on "click", ->
-        resetDirectories()
-        $scope.$apply()
+    button.$reset.on "click", ->
+      resetDirectories()
+      $scope.$apply()
 
-    button.$test
-      .on "click", ->
-        getDirectories()
+    button.$test.on "click", ->
+      getDirectories()
 
     $scope.directories = []
 
@@ -43,8 +28,9 @@ angular
         parent: null
 
     getPathFromButton = (button) ->
-      $(button).removeData('path')
-      $(button).data('path')
+      $(button)
+        .removeData('path')
+        .data('path')
 
     updateDirectories = (dirs) ->
       resetDirectories()
@@ -64,8 +50,6 @@ angular
       $scope.directories = []
       $scope.current.directory.path = null
       $scope.current.directory.parent = null
-
-    # updateDirectories(_test)
 
     getDirectories = (path) ->
       _data = "path": path

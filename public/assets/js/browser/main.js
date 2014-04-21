@@ -9,7 +9,6 @@ angular.module("BrowserApp").controller("BrowserCtrl", function($scope) {
   $pathsContainer.on("click", button.$directories, function(event) {
     var path;
     path = getPathFromButton(event.target);
-    console.log(path);
     return getDirectories(path);
   });
   button.$reset.on("click", function() {
@@ -27,8 +26,7 @@ angular.module("BrowserApp").controller("BrowserCtrl", function($scope) {
     }
   };
   getPathFromButton = function(button) {
-    $(button).removeData('path');
-    return $(button).data('path');
+    return $(button).removeData('path').data('path');
   };
   updateDirectories = function(dirs) {
     resetDirectories();
