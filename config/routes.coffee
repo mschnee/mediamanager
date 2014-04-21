@@ -1,3 +1,4 @@
+
 fs   = require "fs"
 path = require "path"
 
@@ -18,7 +19,7 @@ module.exports = (app) ->
     # LOG SOMETHING
     console.log "doing custom validation on #{name}"
     # ONCE VALIDATION IS DONE SAVE THE NEW ITEM IN THE REQ
-    req.name = name + "  oooo"
+    req.name = name + "!"
     # GO TO THE NEXT THING
     next()
 

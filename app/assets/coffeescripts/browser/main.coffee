@@ -25,7 +25,7 @@ angular
     $scope.current =
       directory:
         path: " "
-        name: null
+        name: " "
         parentPath: null
         parentName: null
 
@@ -59,7 +59,7 @@ angular
     resetDirectories = ->
       $scope.directories = []
       $scope.current.directory.path = " "
-      $scope.current.directory.name = null
+      $scope.current.directory.name = " "
       $scope.current.directory.parentPath = null
       $scope.current.directory.parentName = null
 
